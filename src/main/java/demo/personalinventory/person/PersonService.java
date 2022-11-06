@@ -33,4 +33,8 @@ public class PersonService {
     public void deletePersonById(Long id) {
         personRepository.deleteById(id);
     }
+
+    public Person findPersonById(Long id) {
+        return personRepository.findById(id).orElseThrow(() -> new PersonNotFoundException(id));
+    }
 }

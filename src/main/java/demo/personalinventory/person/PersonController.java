@@ -17,6 +17,10 @@ public class PersonController {
     public List<Person> getAllPerson() {
         return personService.getAllPerson();
     }
+    @GetMapping("/{id}")
+    public Person findPersonById(@PathVariable Long id){
+        return personService.findPersonById(id);
+    }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
