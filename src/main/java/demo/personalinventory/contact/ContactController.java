@@ -18,4 +18,10 @@ public class ContactController {
     public Contact createContactForAddress(@RequestBody CreateContactCommand createContactCommand) {
         return contactService.createContact(createContactCommand);
     }
+
+    @PutMapping
+    public Contact updateContactDetails(@RequestBody UpdateContactCommand updateContactCommand) {
+        return contactService.updateContactDetails(updateContactCommand);
+    }
+
 }

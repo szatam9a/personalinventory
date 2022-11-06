@@ -6,6 +6,8 @@ import demo.personalinventory.address.AddressRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 @Service
 @AllArgsConstructor
 public class ContactService {
@@ -24,5 +26,14 @@ public class ContactService {
         contact.setPhoneNumber(createContactCommand.getPhoneNumber());
         contact.setEmailAddress(createContactCommand.getEmailAddress());
         return contactRepository.save(contact);
+    }
+
+    @Transactional
+    public Contact updateContactDetails(UpdateContactCommand updateContactCommand) {
+        Contact contact = contactRepository.findById(updateContactCommand.getId()).orElseThrow(
+                () -> new ContactNotFoundException(updateContactCommand.getId()));
+        contact.setPhoneNumber(updateContactCommand.getPhoneNumber());
+        contact.setEmailAddress(updateContactCommand.getEmailAddress());
+        return contact;
     }
 }
