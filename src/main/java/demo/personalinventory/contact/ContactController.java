@@ -1,19 +1,21 @@
 package demo.personalinventory.contact;
 
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/contact")
 @AllArgsConstructor
 public class ContactController {
-    private ContactRepository contactRepository;
+    private ContactService contactService;
 
     @GetMapping("/{id}")
     public Contact findContactById(@PathVariable long id) {
-        return contactRepository.findById(id).orElseThrow(() -> new ContactNotFoundException(id));
+        return contactService.findContactById(id);
+    }
+
+    @PostMapping
+    public Contact createContactForAddress(@RequestBody CreateContactCommand createContactCommand) {
+        return contactService.createContact(createContactCommand);
     }
 }
