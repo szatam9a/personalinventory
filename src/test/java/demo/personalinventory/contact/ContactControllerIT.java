@@ -1,16 +1,13 @@
 package demo.personalinventory.contact;
 
 import demo.personalinventory.address.Address;
-import demo.personalinventory.address.AddressRepository;
 import demo.personalinventory.address.CreateAddressCommand;
 import demo.personalinventory.person.CreatePersonCommand;
 import demo.personalinventory.person.Person;
-import demo.personalinventory.person.PersonRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -19,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 //@Sql(statements = {"delete from persons", "delete from contacts", "delete from addresses"})
 
-class ContactServiceIT {
+class ContactControllerIT {
 
     @Autowired
     WebTestClient webTestClient;
@@ -57,5 +54,4 @@ class ContactServiceIT {
                 .getResponseBody();
         assertThat(updatedContact).extracting(e->e.getPhoneNumber()).isEqualTo("0620666666");
     }
-
 }
