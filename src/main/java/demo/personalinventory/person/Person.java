@@ -18,8 +18,8 @@ public class Person {
     private Long id;
     @Column(name = "person_name")
     private String name;
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne
     private Address temporaryAddress;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     private Address permanentAddress;
 }

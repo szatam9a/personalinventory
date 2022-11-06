@@ -23,6 +23,7 @@ public class ContactService {
                 () -> new AddressNotFoundException(createContactCommand.getAddressId()));
         Contact contact = new Contact();
         contact.setAddress(address);
+        address.getContactList().add(contact);
         contact.setPhoneNumber(createContactCommand.getPhoneNumber());
         contact.setEmailAddress(createContactCommand.getEmailAddress());
         return contactRepository.save(contact);

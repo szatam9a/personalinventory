@@ -1,10 +1,7 @@
 package demo.personalinventory.address;
 
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/address")
@@ -15,5 +12,17 @@ public class AddressController {
     @GetMapping("/{id}")
     public Address getAddressById(@RequestParam Long id) {
         return addressService.findAddressById(id);
+    }
+    @PostMapping
+    public  Address createTempAddressForPerson(@RequestBody CreateAddressCommand createAddressCommand){
+        return addressService.createTempAddress(createAddressCommand);
+    }
+    @PostMapping
+    public  Address createPermAddressForPerson(@RequestBody CreateAddressCommand createAddressCommand){
+        return addressService.createPermAddress(createAddressCommand);
+    }
+    @PutMapping
+    public Address updateAddressById(@RequestBody UpdateAddressCommand updateAddressCommand){
+        return addressService.updateAddress(updateAddressCommand);
     }
 }
