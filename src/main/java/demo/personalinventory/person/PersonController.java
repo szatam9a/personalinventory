@@ -28,4 +28,8 @@ public class PersonController {
     public Person updatePerson(@Valid @RequestBody UpdatePersonCommand updatePersonCommand) {
         return personService.updatePerson(updatePersonCommand);
     }
+    @DeleteMapping("/{id}")
+    public void deletePerson(@PathVariable Long id ){
+        personService.deletePersonById(id);
+    }
 }

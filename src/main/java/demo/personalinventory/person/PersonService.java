@@ -29,4 +29,8 @@ public class PersonService {
         person.setName(updatePersonCommand.getPersonName());
         return person;
     }
+
+    public void deletePersonById(Long id) {
+        personRepository.deleteById(id);
+    }
 }
