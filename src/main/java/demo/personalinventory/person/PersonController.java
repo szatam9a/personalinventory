@@ -1,6 +1,7 @@
 package demo.personalinventory.person;
 
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,6 +17,7 @@ public class PersonController {
         return personService.getAllPerson();
     }
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public Person createNewPerson(@RequestBody CreatePersonCommand createPersonCommand){
      return personService.createNewPerson(createPersonCommand);
     }
