@@ -5,4 +5,3 @@ INSERT INTO `crud2`.`addresses` (`address_id`, `address_city`, `address_street`)
 INSERT INTO `crud2`.`contacts` (`contact_id`, `contact_address_id`) VALUES ('1', '2');
 INSERT INTO `crud2`.`contacts` (`contact_id`, `contact_address_id`) VALUES ('2', '3');
 INSERT INTO `crud2`.`contacts` (`contact_id`, `contact_address_id`) VALUES ('3', '3');
-INSERT INTO `crud2`.`persons` (`person_id`, `temporary_address_address_id`, `permanent_address_address_id`) VALUES ('1', '2', '4');
