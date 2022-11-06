@@ -14,4 +14,10 @@ public class PersonService {
     public List<Person> getAllPerson() {
         return personRepository.findAll();
     }
+
+    public Person createNewPerson(CreatePersonCommand createPersonCommand) {
+        Person person = new Person();
+        person.setName(createPersonCommand.getName());
+        return personRepository.save(person);
+    }
 }
