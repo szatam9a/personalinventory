@@ -25,10 +25,11 @@ public class AddressService {
         Person person = personRepository.findById(createAddressCommand.getPersonId()).orElseThrow(
                 () -> new PersonNotFoundException(createAddressCommand.getPersonId()));
         Address address = new Address();
+        addressRepository.save(address);
         address.setCity(createAddressCommand.getCity());
         address.setStreet(createAddressCommand.getStreet());
         person.setTemporaryAddress(address);
-        return addressRepository.save(address);
+        return address;
     }
 
     @Transactional

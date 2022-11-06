@@ -13,11 +13,11 @@ public class AddressController {
     public Address getAddressById(@RequestParam Long id) {
         return addressService.findAddressById(id);
     }
-    @PostMapping
+    @PostMapping("temp")
     public  Address createTempAddressForPerson(@RequestBody CreateAddressCommand createAddressCommand){
         return addressService.createTempAddress(createAddressCommand);
     }
-    @PostMapping
+    @PostMapping("/perm")
     public  Address createPermAddressForPerson(@RequestBody CreateAddressCommand createAddressCommand){
         return addressService.createPermAddress(createAddressCommand);
     }

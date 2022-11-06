@@ -18,15 +18,17 @@ public class ContactService {
         return contactRepository.findById(id).orElseThrow(() -> new ContactNotFoundException(id));
     }
 
+    @Transactional
     public Contact createContact(CreateContactCommand createContactCommand) {
         Address address = addressRepository.findById(createContactCommand.getAddressId()).orElseThrow(
                 () -> new AddressNotFoundException(createContactCommand.getAddressId()));
         Contact contact = new Contact();
-        contact.setAddress(address);
         address.getContactList().add(contact);
+        contactRepository.save(contact);
+        contact.setAddress(address);
         contact.setPhoneNumber(createContactCommand.getPhoneNumber());
         contact.setEmailAddress(createContactCommand.getEmailAddress());
-        return contactRepository.save(contact);
+        return contact;
     }
 
     @Transactional

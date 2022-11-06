@@ -22,6 +22,5 @@ public class Address {
     @Column(name = "address_street")
     private String street;
     @OneToMany(mappedBy = "address")
-    @JsonManagedReference
     private List<Contact> contactList;
 }
