@@ -1,5 +1,6 @@
 package demo.personalinventory.address;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import demo.personalinventory.contact.Contact;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,5 +22,6 @@ public class Address {
     @Column(name = "address_street")
     private String street;
     @OneToMany(mappedBy = "address")
+    @JsonManagedReference
     private List<Contact> contactList;
 }

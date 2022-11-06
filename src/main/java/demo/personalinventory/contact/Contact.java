@@ -1,5 +1,6 @@
 package demo.personalinventory.contact;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import demo.personalinventory.address.Address;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,5 +22,6 @@ public class Contact {
     private String phoneNumber;
     @ManyToOne
     @JoinColumn(name = "contact_address_id")
+    @JsonBackReference
     private Address address;
 }
